@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import ArtHouseLogo from "../assets/ArtHouse_logo.png";
 import { LoginAPI, GoogleSignInAPI } from "../api/AuthApi";
 import GoogleButton from 'react-google-button';
@@ -60,7 +61,10 @@ export default function LoginComponent() {
                 />
 
                 <p className="go-to-signup">
-                    New to ArtHouse? <span className="join-now">Join now</span>
+                    New to ArtHouse?{" "}
+                    <Link to="/register" className="join-now" >
+                        Join now
+                    </Link>
                 </p>
             </div>
         </div>
