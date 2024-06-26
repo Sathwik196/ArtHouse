@@ -1,40 +1,68 @@
 import React, { useState } from "react";
-import { LoginAPI } from "../api/AuthApi";
+import ArtHouseLogo from "../assets/ArtHouse_logo.png";
+import { LoginAPI, GoogleSignInAPI } from "../api/AuthApi";
+import GoogleButton from 'react-google-button';
 import '../Sass/LoginComponent.scss';
+import { toast } from 'react-toastify';
 
 export default function LoginComponent() {
     const [credentials, setCredentials] = useState({});
     const login = async () => {
         try{
             let res = await LoginAPI(credentials.email, credentials.password);
-            console.log(res);
+            toast.success('Signed In to ArtHouse!');
         }
         catch(err){
             console.log(err);
+            toast.error('Please check your credentials');
         }
     };
+
+    const googleSignIn = () =>{
+        let response = GoogleSignInAPI();
+        console.log(response);
+    }
     return (
         <div className="login-wrapper">
-            <h1>LoginComponent</h1>
-            <div className="auth-inputs">
-                <input 
-                    onChange={(event) =>
-                        setCredentials({...credentials, email: event.target.value})
-                    }
-                    className="common-input"
-                    placeholder="Enter your Email"
-                />
-                <input 
-                    onChange={(event) =>
-                        setCredentials({...credentials, password: event.target.value})
-                    }
-                    className="common-input"
-                    placeholder="Enter your Password"
-                />
+            <img src={ArtHouseLogo} className="ArtHouseLogo"/>
+            <div className="login-wrapper-inner">
+                <h1 className="heading">Sign in</h1>
+                <p className="sub-heading">Share your talents with the world</p>
+                
+                <div className="auth-inputs">
+                    <input 
+                        onChange={(event) =>
+                            setCredentials({...credentials, email: event.target.value})
+                        }
+                        type="email"
+                        className="common-input"
+                        placeholder="Email or Phone"
+                    />
+                    <input 
+                        onChange={(event) =>
+                            setCredentials({...credentials, password: event.target.value})
+                        }
+                        type="password"
+                        className="common-input"
+                        placeholder="Password"
+                    />
+                </div>
+                <button onClick={login} className="login-btn">
+                    Sign in
+                </button>
             </div>
-            <button onClick={login} className="Login-btn">
-                Log In to ArtHouse
-            </button>
+            <hr class="hr-text" data-content="or" />
+            <div className="google-btn-container">
+                {/* {console.log('Rendering Google button')} */}
+                <GoogleButton
+                    className="google-btn"
+                    onClick={googleSignIn}
+                />
+
+                <p className="go-to-signup">
+                    New to ArtHouse? <span className="join-now">Join now</span>
+                </p>
+            </div>
         </div>
     );
 }
