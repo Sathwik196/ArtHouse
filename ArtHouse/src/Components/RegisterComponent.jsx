@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ArtHouseLogo from "../assets/ArtHouse_logo.png";
 import { RegisterAPI, GoogleSignInAPI } from "../api/AuthApi";
 import GoogleButton from 'react-google-button';
@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 
 export default function RegisterComponent() {
     const [credentials, setCredentials] = useState({});
+    const navigate = useNavigate();
     const login = async () => {
         try{
             let res = await RegisterAPI(credentials.email, credentials.password);
@@ -27,7 +28,8 @@ export default function RegisterComponent() {
         <div className="login-wrapper">
             <img src={ArtHouseLogo} className="ArtHouseLogo"/>
             <div className="login-wrapper-inner">
-                <h1 className="heading">Make most of your professional life</h1>
+                <h1 className="heading">Create Account</h1>
+                <p className="sub-heading">Make the most of your professional life</p>
                 
                 <div className="auth-inputs">
                     <input 
@@ -48,7 +50,7 @@ export default function RegisterComponent() {
                     />
                 </div>
                 <button onClick={login} className="login-btn">
-                    Sign in
+                    Sign up
                 </button>
             </div>
             <hr class="hr-text" data-content="or" />
@@ -61,9 +63,9 @@ export default function RegisterComponent() {
 
                 <p className="go-to-signup">
                     Already on ArtHouse?{" "}
-                    <Link to="/" className="join-now" >
+                    <span className="join-now" onClick={() => navigate('/')}>
                         Sign in
-                    </Link>
+                    </span>
                 </p>
             </div>
         </div>

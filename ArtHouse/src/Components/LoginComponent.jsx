@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ArtHouseLogo from "../assets/ArtHouse_logo.png";
 import { LoginAPI, GoogleSignInAPI } from "../api/AuthApi";
 import GoogleButton from 'react-google-button';
@@ -8,10 +8,12 @@ import { toast } from 'react-toastify';
 
 export default function LoginComponent() {
     const [credentials, setCredentials] = useState({});
+    const navigate = useNavigate();
     const login = async () => {
         try{
             let res = await LoginAPI(credentials.email, credentials.password);
             toast.success('Signed In to ArtHouse!');
+            navigate('/home');
         }
         catch(err){
             console.log(err);
@@ -62,9 +64,9 @@ export default function LoginComponent() {
 
                 <p className="go-to-signup">
                     New to ArtHouse?{" "}
-                    <Link to="/register" className="join-now" >
+                    <span className="join-now" onClick={() => navigate('/register')}>
                         Join now
-                    </Link>
+                    </span>
                 </p>
             </div>
         </div>
