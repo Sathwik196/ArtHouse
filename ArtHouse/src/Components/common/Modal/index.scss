@@ -39,6 +39,10 @@
 
     // Customizing the post button
     .post-button {
+        font-family: system-ui;
+        font-weight: 600;
+        border-width: 2px;
+
         &.disabled {
             background-color: #303030; // Grey for disabled state
             border-color: #e86106;
