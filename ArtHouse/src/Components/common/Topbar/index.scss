@@ -1,0 +1,41 @@
+$ahorange1: #e86106;
+.topbar-main {
+    width: 100%;
+    height: 60px;
+    background-color: $ahorange1;
+    display: flex;
+    align-items: center;
+    //justify-content: space-between;
+}
+
+.ArtHouse-Logo {
+    width: 100px;
+    margin-left: 0px;
+    //position: absolute;
+    //top: 20px;
+    //left: 20px;
+}
+
+.react-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 20px;
+}
+
+.react-icon {
+    cursor: pointer;
+    color: white;
+}
+
+.react-icon:hover {
+    color: black;
+}
+
+.User-icon {
+    width: 30px;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}

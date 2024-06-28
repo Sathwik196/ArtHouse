@@ -58,7 +58,7 @@ export default function LoginComponent() {
             <div className="google-btn-container">
                 {/* {console.log('Rendering Google button')} */}
                 <GoogleButton
-                    className="google-btn"
+                    style={{ width: '300px' }}
                     onClick={googleSignIn}
                 />
 

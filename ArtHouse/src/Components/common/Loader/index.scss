@@ -1,0 +1,18 @@
+$ahorange1: #e86106;
+
+.Loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 10px;
+    // color:#e86106;
+}
+
+p {
+    font-family: system-ui;
+    font-weight: 500;
+    // color: $ahorange1;
+    font-size: 18px;
+}
