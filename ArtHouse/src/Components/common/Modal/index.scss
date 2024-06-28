@@ -1,3 +1,7 @@
+$ahorange1: #e86106;
+$ahorange2: #e86006;
+$ahorange3: #a8490a;
+
 .modal {
     .ant-modal-content {
         background-color: #303030;
@@ -28,5 +32,34 @@
         font-size: 16px;
         font-family: system-ui;
         width: 100%;
+    }
+
+    // Customizing the close button
+    .ant-modal-close {
+        .ant-modal-close-x {
+            color: #ffffff; // Change to your desired color
+        }
+    }
+
+    // Customizing the post button
+    .post-button {
+        &.disabled {
+            background-color: #303030; // Grey for disabled state
+            border-color: #e86106;
+            cursor: not-allowed;
+            color: #e86106;
+        }
+
+        &.enabled {
+            background-color: #e86106; // Orange for enabled state
+            border-color: #e86106;
+            color: white;
+        }
+
+        &:hover.enabled,
+        &:focus.enabled {
+            background-color: #a8490a; // Darker orange for hover/focus state
+            border-color: #a8490a;
+        }
     }
 }

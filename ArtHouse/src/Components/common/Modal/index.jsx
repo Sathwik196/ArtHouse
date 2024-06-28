@@ -23,6 +23,9 @@ const ModalComponent = ({
                         onClick={sendStatus}
                         key="submit"
                         type="primary"
+                        className={`post-button ${
+                            status.length > 0 ? "enabled" : "disabled"
+                        }`}
                         disabled={status.length > 0 ? false : true}
                     >
                         Post
